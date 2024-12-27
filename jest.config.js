@@ -1,0 +1,15 @@
+export default {
+  testEnvironment: 'node',
+  verbose: true,
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
+  moduleFileExtensions: ['js'],
+  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
+  testPathIgnorePatterns: ['/node_modules/'],
+  roots: ['./src'],
+  setupFiles: ['./jest.setup.js'],
+  clearMocks: true,
+  watchman: false,
+  transform: {},
+};
