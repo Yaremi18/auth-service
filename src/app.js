@@ -3,6 +3,7 @@ import express from 'express';
 
 import passport from './config/passport.js';
 import errorHandler from './middleware/errorHandler.js';
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
 app.use(cookieParser());
@@ -14,9 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+app.use('/api/auth', authRoutes);
 
 // Error handling
 app.use(errorHandler);
