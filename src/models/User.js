@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Last name is required'],
   },
-  birthday: {
+  birthdate: {
     type: Date,
   },
   createdAt: {

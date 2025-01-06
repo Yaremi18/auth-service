@@ -40,14 +40,14 @@ export const login = async (req, res, next) => {
 
 export const signUp = async (req, res, next) => {
   try {
-    const { email, password, name, lastName, birthday } = req.body;
+    const { email, password, name, lastName, birthdate } = req.body;
 
     const user = new User({
       email,
       password,
       name,
       lastName,
-      birthday,
+      birthdate,
     });
 
     const createdUser = await user.save();
@@ -66,7 +66,7 @@ export const signUp = async (req, res, next) => {
 
 export const logout = async (req, res) => {
   res.clearCookie('jwt');
-  res.json({
+  res.status(200).json({
     message: 'Logout successful',
   });
 };
@@ -88,6 +88,7 @@ export const changePassword = async (req, res, next) => {
     if (currentPassword === newPassword) {
       throw new AppError(
         'The new password cannot be the same as the current password',
+        400,
       );
     }
 
@@ -95,7 +96,7 @@ export const changePassword = async (req, res, next) => {
     await user.save();
     user.password = undefined;
 
-    res.json({
+    res.status(200).json({
       data: {
         user,
       },

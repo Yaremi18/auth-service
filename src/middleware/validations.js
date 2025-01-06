@@ -40,10 +40,10 @@ export const validateSignUpInput = validate([
   ...baseCredentials,
   body('name').notEmpty().withMessage('Name is required'),
   body('lastName').notEmpty().withMessage('Last name is required'),
-  body('birthday')
+  body('birthdate')
     .optional()
     .isDate()
-    .withMessage('Invalid date for birthday (YYYY-MM-DD)'),
+    .withMessage('Invalid date for birthdate (YYYY-MM-DD)'),
 ]);
 
 export const validateChangePasswordInput = validate([
