@@ -6,7 +6,7 @@ const getUsers = async (req, res, next) => {
     const limit = parseInt(req.query.limit, 10) || 10;
     const skip = (page - 1) * limit;
 
-    const users = await User.find().skip(skip).limit(limit);
+    const users = await User.find({}, { password: 0 }).skip(skip).limit(limit);
     const totalUsers = await User.countDocuments();
     const totalPages = Math.ceil(totalUsers / limit);
 
