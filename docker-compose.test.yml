@@ -1,0 +1,16 @@
+services:
+  test-base: &test-base
+    build: .
+    env_file:
+      - .env.local
+  test:
+    <<: *test-base
+    command: npm test
+
+  test-watch:
+    <<: *test-base
+    command: npm run test:watch
+
+  test-coverage:
+    <<: *test-base
+    command: npm run test:coverage

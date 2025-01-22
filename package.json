@@ -10,6 +10,13 @@
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage",
     "prepare": "husky",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose -p app --env-file .env.local up",
+    "docker:down": "docker compose -p app --env-file .env.local down",
+    "docker:test": "docker compose -p test -f docker-compose.test.yml run --rm test",
+    "docker:test-watch": "docker compose -p test -f docker-compose.test.yml run --rm test-watch",
+    "docker:test-coverage": "docker compose -p test -f docker-compose.test.yml run --rm test-coverage",
+    "docker:test:down": "docker compose -p test -f docker-compose.test.yml down",
     "lint": "eslint 'src/**/*.js' --max-warnings=0"
   },
   "repository": {
